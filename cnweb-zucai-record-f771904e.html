@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>足彩竞猜 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f9fbfd;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1e24;
+      line-height: 1.7;
+      padding: 2rem 1.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .page {
+      max-width: 720px;
+      width: 100%;
+    }
+
+    /* 标题层级 */
+    h1 {
+      font-size: 2rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+      color: #0b121c;
+    }
+    .subhead {
+      font-size: 1rem;
+      color: #5d6b7a;
+      margin-top: 0.1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 1.2rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 530;
+      margin-top: 2.2rem;
+      margin-bottom: 0.8rem;
+      padding-left: 0.25rem;
+      border-left: 3px solid #2a7a6e;
+      padding-left: 0.75rem;
+      color: #0f1a28;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 520;
+      margin: 1.2rem 0 0.4rem;
+      color: #1f2a38;
+    }
+
+    /* 正文区域 */
+    p {
+      margin-bottom: 1rem;
+      font-size: 0.975rem;
+      color: #2a3440;
+    }
+    a {
+      color: #1b6b5f;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(27, 107, 95, 0.25);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    a:hover {
+      border-bottom-color: #1b6b5f;
+      color: #0d4c43;
+    }
+
+    /* 卡片式目录区块 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .card-item {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+      border: 1px solid #ecf1f7;
+      transition: box-shadow 0.2s, transform 0.1s;
+    }
+    .card-item:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+      transform: translateY(-1px);
+    }
+    .card-item .label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #6f7d8c;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .card-item .title {
+      font-size: 1rem;
+      font-weight: 530;
+      color: #131d29;
+      margin-bottom: 0.15rem;
+    }
+    .card-item .desc {
+      font-size: 0.875rem;
+      color: #4a5a6a;
+      line-height: 1.5;
+    }
+
+    /* 提示 & 信息区 */
+    .note-box {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      margin: 1.8rem 0 1.5rem;
+      border-left: 4px solid #2a7a6e;
+    }
+    .note-box p {
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .note-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.2rem;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1rem 1.3rem;
+      margin: 1.5rem 0 1.8rem;
+    }
+    .info-tag {
+      background: #eef2f6;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #1f2c3a;
+      white-space: nowrap;
+    }
+
+    /* FAQ 摘要 */
+    .faq-item {
+      border-bottom: 1px dashed #dce3ec;
+      padding: 0.8rem 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-q {
+      font-weight: 510;
+      color: #0c1a26;
+      margin-bottom: 0.2rem;
+    }
+    .faq-a {
+      font-size: 0.9rem;
+      color: #40505e;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 2rem 0 0.5rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 500px) {
+      body {
+        padding: 1.2rem 1rem 2.5rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      h1 {
+        font-size: 1.7rem;
+      }
+      .note-box {
+        padding: 1rem 1rem;
+      }
+      .info-row {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    /* 极小屏微调 */
+    @media (max-width: 380px) {
+      .card-item {
+        padding: 0.9rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <h1>足彩竞猜知识库</h1>
+    <div class="subhead">日常查询 · 对照 · 延伸阅读</div>
+
+    <p>
+      无论是初涉彩市的新手，还是积累了一定经验的爱好者，手边常备一份清晰、可靠的知识索引，都能让分析思路更连贯。<a href="https://cnweb-zucai.com">足彩竞猜</a>涉及的术语、玩法规则、数据解读维度庞杂，从基础赔率结构到常见投注策略，一个结构化的入口能帮你快速定位所需信息。以下从四个常用方向展开，方便随时查阅。
+    </p>
+
+    <!-- 卡片目录 -->
+    <div class="card-grid">
+      <div class="card-item">
+        <div class="label">术语对照</div>
+        <div class="title">盘口 · 水位 · 凯利指数</div>
+        <div class="desc">主客让球、大小球、欧赔与亚盘的对应关系，以及离散度、必发指数等进阶指标释义。</div>
+      </div>
+      <div class="card-item">
+        <div class="label">玩法分类</div>
+        <div class="title">胜平负 · 比分 · 总进球</div>
+        <div class="desc">单关与串关的规则差异，让球胜平负的折算方式，半全场、比分玩法的适用场景。</div>
+      </div>
+      <div class="card-item">
+        <div class="label">数据参考</div>
+        <div class="title">历史交锋 · 近期状态 · 伤停</div>
+        <div class="desc">球队攻防效率、主客场差异、核心球员缺阵影响，以及积分榜形势的间接作用。</div>
+      </div>
+      <div class="card-item">
+        <div class="label">延伸阅读</div>
+        <div class="title">策略笔记 · 心理 · 资金管理</div>
+        <div class="desc">常见投注框架（如均注、比例法）、认知偏差提示、赛前信息筛选清单。</div>
+      </div>
+    </div>
+
+    <h2>用法说明</h2>
+    <p>
+      本页面作为一个轻量索引，不替代任何深度分析工具。每个卡片区域对应的内容，可以在对应的专题页面中找到更完整的展开。如果你正在查找某个特定概念的解释，比如“平半盘”与“半球盘”的转换逻辑，或“凯利指数”的常规阈值，可以直接在 <a href="https://cnweb-zucai.com">足彩竞猜</a> 站内通过搜索或分类导航定位。建议将常用对照表（例如欧赔与亚盘换算、大小球水位区间）收藏或截图，方便临场快速参考。
+    </p>
+
+    <!-- 提示区 -->
+    <div class="note-box">
+      <p><strong>💡 提示</strong>  ——  保持信息源交叉验证</p>
+      <p>同场比赛不同机构的赔率调整节奏、必发交易量分布往往能反映市场情绪。结合球队基本面（而非仅看赔率数值）能提高判断的稳定性。另外，注意区分“初参”与“即时”数据，时间维度会改变解读方向。</p>
+      <p style="margin-top:0.6rem;">若发现页面中某个概念表述模糊，推荐从站内「术语手册」或「常见问答」板块开始对照。</p>
+    </div>
+
+    <h2>相关信息区</h2>
+    <div class="info-row">
+      <span class="info-tag">常用换算</span>
+      <span class="info-tag">赔率与概率</span>
+      <span class="info-tag">返还率</span>
+      <span class="info-tag">让球平衡</span>
+      <span class="info-tag">大小球中位数</span>
+      <span class="info-tag">必发指数</span>
+    </div>
+    <p>
+      以上标签对应 <a href="https://cnweb-zucai.com">足彩竞猜</a> 知识库中的常见分类。例如“返还率”决定了赔率的理论赔付水平，不同市场（如亚洲、欧洲）返还率差异会影响对比结论；“让球平衡”则涉及亚洲盘口的资金分布与调整逻辑。每个标签都可以点击进入对应的专题卡片页，获取更细致的计算公式和案例。
+    </p>
+
+    <h2>FAQ 摘要</h2>
+    <div class="faq-item">
+      <div class="faq-q">问：欧赔与亚盘的核心区别是什么？</div>
+      <div class="faq-a">欧赔以概率形式表达（胜平负三项），亚盘通过让球 + 水位来平衡两侧投注。实质都是对比赛结果的预期，但呈现方式和解读维度不同。亚盘更侧重让球后的胜平负判断，而欧赔直接反映概率。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">问：凯利指数怎么用比较实际？</div>
+      <div class="faq-a">凯利指数反映赔率与真实概率的偏差。通常看“凯利值”是否在 0.85~1.00 之间，过低可能代表机构压低赔付，过高则可能隐含诱盘。但需结合多家对比，单一数值参考意义有限。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">问：串关时应该注意什么？</div>
+      <div class="faq-a">串关的奖金是各场赔率相乘，但容错率低。建议单关或 2-3 场串关为主，避免长串。同时注意不同玩法（比如胜平负与让球胜平负）不能混合串关，具体规则以站内“玩法说明”为准。</div>
+    </div>
+
+    <hr>
+    <p style="font-size:0.85rem; color:#6f7d8c; margin-top:0.25rem;">
+      本知识库持续更新，力求内容准确、克制。所有信息仅供学习参考，不构成任何投注建议。请理性对待。
+    </p>
+
+  </div>
+</body>
+</html>
