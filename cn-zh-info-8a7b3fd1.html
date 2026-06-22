@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资讯索引 · 足彩竞猜资料专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f5f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1d2633;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 — 杂志风格横幅 */
+        .hero {
+            background: #0e141f;
+            background-image: radial-gradient(circle at 20% 30%, #1f2b3b 0%, #0a101a 90%);
+            padding: 3.5rem 1.5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid #e6b13e;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #e6b13e 0px, #e6b13e 8px, transparent 8px, transparent 18px);
+        }
+
+        .hero h1 {
+            color: #f0e9dc;
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            color: #b8c4d2;
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            font-weight: 350;
+            border-top: 1px solid #374151;
+            padding-top: 0.8rem;
+        }
+
+        /* 浅色正文区 */
+        .wrapper {
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 3.5rem;
+        }
+
+        .intro-block {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro-block h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            border-left: 6px solid #e6b13e;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            color: #1a232f;
+        }
+
+        .intro-block h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2c3a4a;
+            margin-top: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.2rem;
+            color: #2a3545;
+        }
+
+        .accent-link {
+            color: #c77d1e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .accent-link:hover {
+            color: #a56210;
+            border-bottom: 1px solid #a56210;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 1.8rem 0 0.8rem;
+        }
+
+        .card {
+            flex: 1 1 200px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.3rem 1.2rem;
+            border: 1px solid #e7ebf0;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+        }
+
+        .card .card-title {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #1b2738;
+            margin-bottom: 0.3rem;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            color: #3f4a58;
+            margin-bottom: 0;
+        }
+
+        .faq-summary {
+            background: #f2f5f9;
+            padding: 1.6rem 2rem;
+            border-radius: 14px;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #e6b13e;
+        }
+
+        .faq-summary summary {
+            font-weight: 500;
+            font-size: 1.05rem;
+            cursor: pointer;
+            color: #1a232f;
+            padding: 0.2rem 0;
+        }
+
+        .faq-summary p {
+            margin-top: 0.8rem;
+            color: #314156;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 1.8rem 1.5rem 2.2rem;
+            color: #5d6b7a;
+            font-size: 0.92rem;
+            border-top: 1px solid #dce1e8;
+            margin-top: 1.2rem;
+            background: #f4f5f7;
+        }
+
+        .site-footer a {
+            color: #c77d1e;
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 680px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .intro-block {
+                padding: 1.6rem 1.2rem;
+            }
+            .card-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .wrapper {
+                padding: 1.8rem 1rem 2.5rem;
+            }
+        }
+
+        @media (max-width: 460px) {
+            .hero {
+                padding: 2.5rem 1rem 2rem;
+            }
+            .intro-block h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 首页深色横幅 -->
+    <header class="hero">
+        <h1>资料·索引&nbsp; 足彩竞猜</h1>
+        <p>信息整合 · 赛事数据 · 专题笔记 —— 以杂志式逻辑梳理竞猜相关素材</p>
+    </header>
+
+    <div class="wrapper">
+
+        <!-- 背景说明：资料整理视角 -->
+        <section class="intro-block">
+            <h2>从资料整理到信息索引</h2>
+            <p>竞猜类内容涉及大量赛事历史、赔率变动、球队状态及统计模型。本页作为<strong>资料索引</strong>的起点，围绕竞猜相关的公开信息与结构化笔记展开，并非推荐或分析平台。我们关注的是如何把分散的数据源、赛事档案和术语体系组织成可查阅的线索。</p>
+            <p>目前覆盖的内容包括：五大联赛对阵记录、常见盘口术语对照、赔率类型说明以及部分赛季积分走势。每一条记录都标注了来源与更新日期，方便回溯查证。</p>
+        </section>
+
+        <!-- 三段自然介绍：特点 · 场景 · 结构 -->
+        <section class="intro-block">
+            <h2>信息组织特点</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">📋 条目化归档</div>
+                    <p>每轮联赛单独建页，包含赛果、红黄牌、控球率等基础数据，不掺杂预测。</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">🧾 术语与注释</div>
+                    <p>对亚洲盘口、欧赔、大小球等概念提供简明释义，帮助新读者理解常见表达。</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">🗂️ 跨赛季对照</div>
+                    <p>同一联赛近三赛季的数据并列展示，便于观察趋势及阵容变化。</p>
+                </div>
+            </div>
+
+            <h3>适合哪些查阅场景</h3>
+            <p>赛事爱好者希望回顾历史交锋记录，或研究特定球队在主客场的表现差异；资料撰写者需要引用客观统计；竞猜参与者想对比不同机构开出的初始赔率与临场变化。这些场景都依赖<strong>干净、可验证的原始数据</strong>，而非观点输出。</p>
+
+            <h3>索引结构简述</h3>
+            <p>导航按联赛划分（英超、西甲、意甲、德甲、法甲），每项下再分赛季、轮次、交锋。此外设有独立页面整理典型赔率变动案例，以及一篇关于“凯利指数与市场热度”的编译笔记。所有页面均可在站内通过侧栏标签跳转。</p>
+        </section>
+
+        <!-- FAQ摘要 + 链接自然嵌入 -->
+        <section class="intro-block">
+            <h2>常见查询摘要</h2>
+            <div class="faq-summary">
+                <details>
+                    <summary>⚽ 数据更新频率与覆盖范围</summary>
+                    <p>通常每轮比赛结束后24小时内更新。覆盖欧洲主要联赛及部分杯赛（欧冠、欧联、足总杯）。数据源为官方统计及公开体育数据接口，不做二次加工。</p>
+                </details>
+                <details>
+                    <summary>📊 赔率资料属于哪类内容</summary>
+                    <p>收录主流机构（如威廉希尔、bet365）初始赔率及终盘赔率，仅作存档与对比。不提供任何投注建议。部分页面附带水位变化折线图，属于可视化整理。</p>
+                </details>
+                <details>
+                    <summary>🔗 如何访问完整资料库</summary>
+                    <p>所有整理好的文档、赛季表格、赔率归档均放置在 <a href="https://cn-zh-zucai.com" class="accent-link">足彩竞猜</a> 的资料分区。从首页可进入联赛索引或直接搜索队伍名称。页面保持轻量，无明显广告。</p>
+                </details>
+            </div>
+            <p style="margin-top: 0.8rem; font-size: 0.95rem; color: #3d4a5a;">如需浏览完整目录及历史赛季数据，可直接访问 <a href="https://cn-zh-zucai.com" class="accent-link">足彩竞猜</a> 主页。站内所有材料均以信息整理为目的，不构成任何形式的行为引导。</p>
+        </section>
+
+        <!-- 页尾访问提示（简洁，不重复诱导） -->
+        <footer class="site-footer">
+            <p>杂志式资料归档 · 持续更新中<br>已归档赛季：2021/22 · 2022/23 · 2023/24 · 2024/25（进行中）</p>
+            <p style="margin-top: 0.5rem;"><a href="https://cn-zh-zucai.com">足彩竞猜</a> — 基于公开数据的索引项目</p>
+        </footer>
+
+    </div>
+</body>
+</html>
